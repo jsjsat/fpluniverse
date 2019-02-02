@@ -2,14 +2,19 @@
     font-family:Arial,Helvetica;
 }
 
-.bubble{
+circle{
 	cursor: pointer;
-	opacity: 0.3;
+	opacity: 0.9;
 }
 
-.bubble:hover {
-	opacity: 1;
-	stroke: white;
+circle:hover {
+    stroke: white;
+    stroke-dasharray: 4;
+    stroke-opacity: 0.8;
+}
+
+text {
+    cursor: pointer;
 }
 
 .bubbleDiv {

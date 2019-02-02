@@ -25,7 +25,8 @@ export class UniverseService {
                 return ps.elements.map(p => {return {
                     firstName: p.first_name,
                     lastName: p.second_name,
-                    points: p.total_points
+                    points: p.total_points,
+                    team: p.team,
         }})}));
     }
 

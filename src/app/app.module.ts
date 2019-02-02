@@ -15,7 +15,8 @@ import { UniverseChartComponent } from './universe/universe-chart/universe-chart
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]
