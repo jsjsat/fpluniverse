@@ -3,7 +3,7 @@ import * as d3 from 'd3';
 import { Player } from 'src/app/model/player';
 import { UniverseService } from '../services/universe-service';
 import Utils from 'src/app/util/utils';
-import { ScaleLinear } from 'd3';
+import { ScaleLinear, SimulationNodeDatum, SimulationLinkDatum } from 'd3';
 import { ViewEncapsulation } from '@angular/core';
 
 @Component({
@@ -16,6 +16,7 @@ export class UniverseChartComponent implements OnInit {
   constructor(private universeService: UniverseService) { }
 
   private _players: Player[];
+  private simulation: any;
 
   ngOnInit() {
     this.universeService.getPlayers().subscribe(
@@ -27,17 +28,14 @@ export class UniverseChartComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
-    if (this._players) {
-      this.updateChart(this._players);
-    }
+    this.simulation.force('center', d3.forceCenter(window.innerWidth / 2, window.innerHeight / 2)).alpha(0.8).restart();
   }
 
   getRadius(player: Player, players: Player[]): number {
     let max: number = Math.max.apply(Math, players.map(p => p.points));
     let min: number = Math.min.apply(Math, players.map(p => p.points));
-    let bubbleChartWidth = window.innerWidth;
-    let bubbleChartHeight = window.innerHeight;
-    let minlen: number = Math.min(bubbleChartWidth, bubbleChartHeight);
+    
+    let minlen: number = Math.min(window.innerWidth, window.innerHeight);
     let scaleLinear: ScaleLinear<number, number> = d3.scaleLinear()
       .domain([min, max])
       .range([1, minlen / 20]);
@@ -50,17 +48,18 @@ export class UniverseChartComponent implements OnInit {
     let bubbleChartWidth = window.innerWidth;
     let bubbleChartHeight = window.innerHeight;
 
-    let simulation = d3.forceSimulation()
-      .force("xtocenter", d3.forceX(bubbleChartWidth / 2).strength(0.1))
-      .force("ytocenter", d3.forceY(bubbleChartHeight / 2).strength(0.1))
-      .force("anticollide", d3.forceCollide().radius((d: Player) => this.getRadius(d, players) + 2));
+    this.simulation = d3.forceSimulation()
+      .nodes(players)
+      .force('center', d3.forceCenter(bubbleChartWidth / 2, bubbleChartHeight / 2))
+      .force("anticollide", d3.forceCollide().radius((d: Player) => this.getRadius(d, players) + 2))
+      .on('tick', ticked);
 
-    let svg = d3.select('svg')
+    let svg = d3.select('.bubbleDiv > svg ')
       .attr('height', bubbleChartHeight)
       .attr('width', bubbleChartWidth);
 
     let bubbles = svg.selectAll('circle').data(players, (d: Player) => d.lastName);
-    let bubbles_enter = bubbles.enter().append('circle').attr('class', 'bubble');
+    let bubbles_enter = bubbles.enter().append('circle').attr('class', 'bubble')
     bubbles_enter.append('title');
 
     let texts = svg.selectAll('text')
@@ -85,10 +84,6 @@ export class UniverseChartComponent implements OnInit {
 
     const texts_update = texts.merge(texts_enter);
     texts.exit().remove();
-
-
-    simulation.nodes(players)
-      .on("tick", ticked)
 
     function ticked() {
       bubbles_update
@@ -115,6 +110,6 @@ export class UniverseChartComponent implements OnInit {
 
   fitsIntoCircle(player: Player, players: Player[]): boolean {
     let circleSize: number = this.getRadius(player, players);
-    return circleSize > (player.lastName.length * 2.5);
+    return circleSize > (player.lastName.length * 1.8);
   }
 }

@@ -1,0 +1,55 @@
+$dialog-color: #6b6a69;
+
+.filter {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1;
+}
+.filterbutton {
+    width: 25px;
+    height: 25px;
+    background-color: $dialog-color;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 3;
+    padding: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    cursor: pointer;
+}
+
+.filterbutton:hover {   
+    line {
+        stroke: white;
+    }
+    path {
+        stroke: white;
+    }
+}
+
+.filterdialog {
+    min-width: 200px;
+    height: 800px;
+    background-color: $dialog-color;
+    position: absolute;
+    top: -775px;
+    right: -175px;
+    z-index: 2;
+    transition: all .5s cubic-bezier(0.820, 0.085, 0.395, 0.895);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.open {
+    right: 0;
+    top: 0;
+}
+
+.close svg {
+    stroke: black;
+    fill: transparent;
+    stroke-linecap: round;
+    stroke-width: 5;
+}

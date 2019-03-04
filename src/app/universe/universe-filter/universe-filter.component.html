@@ -1,0 +1,18 @@
+<div class="filter">
+  <div class="filterbutton" (click)='toggleFilterDialog()'>
+    <svg [style.display]="open ? 'none' : 'initial'" width="25" height="25" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <g>
+       <line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_10" y2="26.657412" x2="82.963116" y1="26.657412" x1="15.111121" fill-opacity="null" stroke-opacity="null" stroke-width="8" fill="none"/>
+       <line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_11" y2="41.182727" x2="70.973216" y1="41.182727" x1="24.898992" fill-opacity="null" stroke-opacity="null" stroke-width="8" fill="none"/>
+       <line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_12" y2="57.472218" x2="64.592751" y1="57.472218" x1="31.70371" fill-opacity="null" stroke-opacity="null" stroke-width="8" fill="none"/>
+       <line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_13" y2="72.435177" x2="53.62979" y1="72.435177" x1="42.962966" fill-opacity="null" stroke-opacity="null" stroke-width="8" fill="none"/>
+      </g>
+     </svg>
+    <svg width="25px" height="25px" viewbox="0 0 25 25" [style.display]="!open ? 'none' : 'initial'">
+      <path stroke="#000" stroke-linecap="round" stroke-width="2px" class="close-x" d="M 5,5 L 20,20 M 20,5 L 5,20" />
+    </svg>
+  </div>
+  <div class="filterdialog" [ngClass]="{'open':open}">
+    <div class="title">Filter</div>
+  </div>
+</div>
