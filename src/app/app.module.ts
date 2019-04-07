@@ -1,18 +1,20 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
-import { UniverseComponent } from './universe/universe.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppComponent } from './app.component';
 import { UniverseChartComponent } from './universe/universe-chart/universe-chart.component';
 import { UniverseFilterComponent } from './universe/universe-filter/universe-filter.component';
+import { UniverseComponent } from './universe/universe.component';
+import { PlayerDetailComponent } from './universe/playerdetail/player-detail.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     UniverseComponent,
     UniverseChartComponent,
-    UniverseFilterComponent
+    UniverseFilterComponent,
+    PlayerDetailComponent
     
   ],
   imports: [

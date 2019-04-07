@@ -9,7 +9,6 @@ $dialog-color: #6b6a69;
 .filterbutton {
     width: 25px;
     height: 25px;
-    background-color: $dialog-color;
     position: absolute;
     right: 0;
     top: 0;
@@ -34,17 +33,19 @@ $dialog-color: #6b6a69;
     height: 800px;
     background-color: $dialog-color;
     position: absolute;
-    top: -775px;
-    right: -175px;
+    top: -767px;
+    right: -165px;
     z-index: 2;
-    transition: all .5s cubic-bezier(0.820, 0.085, 0.395, 0.895);
-    border-top-left-radius: 5px;
+    transition: all 0.5s cubic-bezier(0.82, 0.085, 0.395, 0.895);
     border-bottom-left-radius: 5px;
+    border-bottom: 2px #555 solid;
+    border-left: 2px #555 solid;
 }
 
 .open {
     right: 0;
     top: 0;
+    padding: 15px;
 }
 
 .close svg {
