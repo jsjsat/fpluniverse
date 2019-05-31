@@ -1,3 +1,11 @@
-<p>
-  playerdetail works!
-</p>
+<div
+  class="container"
+  [ngStyle]="{
+    top: position ? position.y + 'px' : '0px',
+    left: position ? position.x + 20 + 'px' : '0px'
+  }"
+>
+  <div class="title">{{ player.lastName }} {{ player.firstName }}</div>
+  <div class="item">Team: {{ player.team | formatTeam }}</div>
+  <div class="item points">Points: {{ player.points }}</div>
+</div>

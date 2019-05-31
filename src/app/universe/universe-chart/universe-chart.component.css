@@ -1,35 +1,33 @@
 .body {
-    font-family:Arial,Helvetica;
+  font-family: Arial, Helvetica;
 }
 
-circle{
-	cursor: pointer;
-	opacity: 0.9;
+circle {
+  cursor: pointer;
+  opacity: 0.9;
 }
 
 circle:hover {
-    stroke: white;
-    stroke-dasharray: 4;
-    stroke-opacity: 0.8;
+  opacity: 1;
 }
 
 text {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .bubbleDiv {
-	width: 100%;
-	height: 100%;
-	background-color: #333;
+  width: 100%;
+  height: 100%;
+  background-color: #333;
 }
 
 .bubbleDiv > svg {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background-color: black;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: black;
 }

@@ -14,8 +14,6 @@ export class UniverseService {
 
     constructor(private http: HttpClient) { }
 
-   
-
     getPlayers(): Observable<Player[]> {
         return this.convert(this.http.get<PlayerServer>(playerUrl));
     }
