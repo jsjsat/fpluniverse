@@ -8,6 +8,8 @@ import { UniverseFilterComponent } from "./universe/universe-filter/universe-fil
 import { UniverseComponent } from "./universe/universe.component";
 import { PlayerDetailComponent } from "./universe/playerdetail/player-detail.component";
 import { SharedModule } from "./shared/shared.module";
+import { MatSelectModule } from "@angular/material/select";
+import { UniverseFilterContentComponent } from "./universe/universe-filter/universe-filter-content/universe-filter-content.component";
 
 const routes: Routes = [
   {
@@ -22,9 +24,11 @@ const routes: Routes = [
     UniverseComponent,
     UniverseChartComponent,
     UniverseFilterComponent,
+    UniverseFilterContentComponent,
     PlayerDetailComponent
   ],
   imports: [
+    MatSelectModule,
     BrowserModule,
     HttpClientModule,
     SharedModule,
