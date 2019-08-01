@@ -1,30 +1,30 @@
-import { Component, OnInit, HostListener, ElementRef } from '@angular/core';
+import { Component, OnInit, HostListener, ElementRef } from "@angular/core";
 
 @Component({
-  selector: 'universe-filter',
-  templateUrl: './universe-filter.component.html',
-  styleUrls: ['./universe-filter.component.scss']
+  selector: "universe-filter",
+  templateUrl: "./universe-filter.component.html",
+  styleUrls: ["./universe-filter.component.scss"]
 })
 export class UniverseFilterComponent implements OnInit {
-
   public open: boolean = false;
 
-  constructor(private eRef: ElementRef) {
-  }
+  constructor(private eRef: ElementRef) {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 
   toggleFilterDialog() {
     this.open = !this.open;
   }
 
-  @HostListener('document:click', ['$event'])
+  @HostListener("document:click", ["$event"])
   clickout(event) {
-    if (!this.eRef.nativeElement.contains(event.target)) {
+    var element = event.target as HTMLElement;
+    if (
+      !this.eRef.nativeElement.contains(event.target) &&
+      !element.classList.contains("mat-option-text")
+    ) {
+      console.log(event.target);
       this.open = false;
     }
   }
-
 }

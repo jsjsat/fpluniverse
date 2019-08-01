@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+@import "@angular/material/prebuilt-themes/purple-green.css";
+
+/* slider */
+.ng5-slider .ng5-slider-bubble.ng5-slider-limit {
+  color: lightgray !important;
+}
+
+.ng5-slider .ng5-slider-bubble {
+  color: yellow !important;
+  font-weight: 800 !important;
+}
+
+.ng5-slider .ng5-slider-pointer {
+  background-color: #ccc !important;
+}
+
+.ng5-slider .ng5-slider-pointer:after {
+  background-color: whitesmoke !important;
+}
+
+.ng5-slider .ng5-slider-selection {
+  background: yellow !important;
+}
+
+.ng5-slider-bubble:focus {
+  outline: yellow auto 1px;
+  outline-color: yellow;
+  outline-style: auto;
+  outline-width: 1px;
+}

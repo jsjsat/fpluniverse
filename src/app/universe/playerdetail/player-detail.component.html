@@ -5,7 +5,30 @@
     left: position ? position.x + 20 + 'px' : '0px'
   }"
 >
-  <div class="title">{{ player.lastName }} {{ player.firstName }}</div>
-  <div class="item">Team: {{ player.team | formatTeam }}</div>
-  <div class="item points">Points: {{ player.points }}</div>
+  <div class="title">
+    <span>{{ player.lastName }} {{ player.firstName }}</span>
+  </div>
+  <table>
+    <tr>
+      <td>Team:</td>
+      <td>{{ player.team | formatTeam }}</td>
+    </tr>
+    <tr></tr>
+    <tr>
+      <td>Position:</td>
+      <td>{{ player.position | formatPosition }}</td>
+    </tr>
+    <tr>
+      <td>Cost:</td>
+      <td>{{ player.cost }}m</td>
+    </tr>
+    <tr>
+      <td>Stats:</td>
+      <td>{{ player.stats }}</td>
+    </tr>
+    <tr>
+      <td>Points:</td>
+      <td class="points">{{ player.points }}</td>
+    </tr>
+  </table>
 </div>

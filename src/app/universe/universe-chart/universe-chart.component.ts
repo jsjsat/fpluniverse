@@ -164,7 +164,6 @@ export class UniverseChartComponent implements OnInit {
   }
 
   selectPlayer(p: Player, select: boolean, sticky: boolean) {
-    console.log(p, select, sticky);
     if (d3.event) {
       (d3.event as Event).stopPropagation();
     }
