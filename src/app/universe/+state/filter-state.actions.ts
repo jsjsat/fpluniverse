@@ -16,5 +16,3 @@ export class ChangeTeam implements Action {
 }
 
 export type Actions = ChangePosition | ChangeTeam;
-
-//https://coursetro.com/posts/code/151/Angular-Ngrx-Store-Tutorial---Learn-Angular-State-Management
