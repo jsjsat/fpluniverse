@@ -1,8 +1,8 @@
-import { Pipe, PipeTransform } from "@angular/core";
-import { POSITIONS } from "../translate";
+import { Pipe, PipeTransform } from '@angular/core';
+import { POSITIONS } from '../translate';
 
 @Pipe({
-  name: "formatPosition"
+  name: 'formatPosition'
 })
 export class PositionPipe implements PipeTransform {
   transform(val: number): string {

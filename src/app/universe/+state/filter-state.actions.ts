@@ -1,7 +1,7 @@
-import { Action } from "@ngrx/store";
+import { Action } from '@ngrx/store';
 
-export const CHANGE_TEAM = "[UNIVERSE] CHANGE TEAM";
-export const CHANGE_POSITION = "[UNIVERSE] CHANGE POSITION";
+export const CHANGE_TEAM = '[UNIVERSE] CHANGE TEAM';
+export const CHANGE_POSITION = '[UNIVERSE] CHANGE POSITION';
 
 export class ChangePosition implements Action {
   readonly type = CHANGE_POSITION;

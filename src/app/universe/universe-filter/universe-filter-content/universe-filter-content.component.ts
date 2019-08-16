@@ -1,19 +1,15 @@
-import { Component } from "@angular/core";
-import { TEAMS, POSITIONS } from "src/app/shared/translate";
-import { Options } from "ng5-slider";
+import { Component } from '@angular/core';
+import { TEAMS, POSITIONS } from 'src/app/shared/translate';
+import { Options } from 'ng5-slider';
 
 @Component({
-  selector: "universe-filter-content",
-  templateUrl: "./universe-filter-content.component.html",
-  styleUrls: ["./universe-filter-content.component.scss"]
+  selector: 'universe-filter-content',
+  templateUrl: './universe-filter-content.component.html',
+  styleUrls: ['./universe-filter-content.component.scss']
 })
 export class UniverseFilterContentComponent {
-  selectedPosition: string = "0";
-  selectedTeam: string = "0";
-
-  getTeams = (): string[] => TEAMS;
-
-  getPositions = (): string[] => POSITIONS;
+  selectedPosition = '0';
+  selectedTeam = '0';
 
   priceOptions = {
     value: 0,
@@ -24,4 +20,8 @@ export class UniverseFilterContentComponent {
       step: 0.1
     } as Options
   };
+
+  getTeams = (): string[] => TEAMS;
+
+  getPositions = (): string[] => POSITIONS;
 }

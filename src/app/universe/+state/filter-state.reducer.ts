@@ -1,10 +1,5 @@
-import { FilterState } from "./filter-state";
-import {
-  Actions,
-  CHANGE_POSITION,
-  ChangePosition,
-  CHANGE_TEAM
-} from "./filter-state.actions";
+import { FilterState } from './filter-state';
+import { Actions, CHANGE_POSITION, CHANGE_TEAM } from './filter-state.actions';
 
 const initialState: FilterState = {};
 

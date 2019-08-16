@@ -1,16 +1,16 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
-import { Player } from "src/app/model/player";
-import { PlayersServer } from "src/app/model/player-server";
-import Utils from "src/app/util/utils";
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Player } from 'src/app/model/player';
+import { PlayersServer } from 'src/app/model/player-server';
+import Utils from 'src/app/util/utils';
 
-const playerUrl: string =
-  "https://cors-anywhere.herokuapp.com/https://fantasy.premierleague.com/api/bootstrap-static/";
+const playerUrl =
+  'https://cors-anywhere.herokuapp.com/https://fantasy.premierleague.com/api/bootstrap-static/';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class UniverseService {
   constructor(private http: HttpClient) {}
