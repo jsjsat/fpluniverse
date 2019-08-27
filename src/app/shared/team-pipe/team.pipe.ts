@@ -6,6 +6,6 @@ import { TEAMS } from '../translate';
 })
 export class TeamPipe implements PipeTransform {
   transform(val: number): string {
-    return TEAMS[val - 1];
+    return TEAMS[val];
   }
 }

@@ -1,16 +1,16 @@
 <form>
   <h4>Position</h4>
-  <mat-select [(value)]="selectedPosition">
-    <mat-option value="0">All</mat-option>
-    <mat-option *ngFor="let pos of getPositions(); let i = index" value="i + 1">
+  <mat-select (selectionChange)="positionChanged($event)" [(value)]="selectedPosition">
+    <mat-option value="-1">All</mat-option>
+    <mat-option *ngFor="let pos of getPositions(); let i = index" value="{{i}}">
       {{ i | formatPosition }}
     </mat-option>
   </mat-select>
   <h4>Team</h4>
-  <mat-select [(value)]="selectedTeam">
-    <mat-option value="0">All</mat-option>
-    <mat-option *ngFor="let team of getTeams(); let i = index" value="i + 1">
-      {{ i + 1 | formatTeam }}
+  <mat-select (selectionChange)="teamChanged($event)" [(value)]="selectedTeam">
+    <mat-option value="-1">All</mat-option>
+    <mat-option *ngFor="let team of getTeams(); let i = index" value="{{i}}">
+      {{ i | formatTeam }}
     </mat-option>
   </mat-select>
   <h4>Price</h4>
@@ -19,6 +19,5 @@
     [(highValue)]="priceOptions.highValue"
     [options]="priceOptions.options"
   ></ng5-slider>
-  <button mat-raised-button color="primary">Apply</button>
   <button mat-raised-button>Reset</button>
 </form>

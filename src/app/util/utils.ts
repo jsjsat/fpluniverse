@@ -3,45 +3,45 @@ import { PlayerServer } from '../model/player-server';
 export default class Utils {
   static getColor(team: number): string {
     switch (team) {
-      case 1: // arsenal
+      case 0: // arsenal
         return '#DB0007';
-      case 2: // astonvilla
+      case 1: // astonvilla
         return '#7A003C';
-      case 3: // bournemouth
+      case 2: // bournemouth
         return '#050052';
-      case 4: // brighton
+      case 3: // brighton
         return '#0057B8';
-      case 5: // burnley
+      case 4: // burnley
         return '#6C1D45';
-      case 6: // chelsea
+      case 5: // chelsea
         return '#034694';
-      case 7: // Palace
+      case 6: // Palace
         return '#1B458F';
-      case 8: // Everton
+      case 7: // Everton
         return '#003399';
-      case 9: // Leicester
+      case 8: // Leicester
         return '#003090';
-      case 10: // Liverpool
+      case 9: // Liverpool
         return '#C8102E';
-      case 11: // City
+      case 10: // City
         return '#6CABDD';
-      case 12: // United
+      case 11: // United
         return '#DA291C';
-      case 13: // Newcastle
+      case 12: // Newcastle
         return '#AAA';
-      case 14: // Norwich
+      case 13: // Norwich
         return '#00a650';
-      case 15: // Sheffield
+      case 14: // Sheffield
         return '#ec2227';
-      case 16: // Southhampton
+      case 15: // Southhampton
         return '#ed1a3b';
-      case 17: // Spurs
+      case 16: // Spurs
         return '#132257';
-      case 18: // Watford
+      case 17: // Watford
         return '#eb0';
-      case 19: // West Ham
+      case 18: // West Ham
         return '#7F0000';
-      case 20: // Wolves
+      case 19: // Wolves
         return '#fdbc02';
       default:
         return 'gray';

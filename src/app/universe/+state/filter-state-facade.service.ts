@@ -6,11 +6,15 @@ import { getFilterState } from './filter-state.selectors';
 import { ChangeTeam, ChangePosition } from './filter-state.actions';
 
 @Injectable({providedIn: 'root'})
-export class ThreadAnalysisFacadeService {
+export class FilterStateFacadeService {
     filterState$: Observable<FilterState>;
 
     constructor(private readonly store: Store<FilterState>) {
         this.filterState$ = store.select(getFilterState);
+    }
+
+    onFilterChanged(): Observable<FilterState> {
+        return this.filterState$;
     }
 
     changeTeam(team?: number): void {

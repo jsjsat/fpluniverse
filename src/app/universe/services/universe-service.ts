@@ -27,7 +27,7 @@ export class UniverseService {
             firstName: p.first_name,
             lastName: p.second_name,
             points: p.total_points,
-            team: p.team,
+            team: p.team - 1,
             position: p.element_type - 1,
             cost: p.now_cost / 10,
             stats: Utils.getStats(p)

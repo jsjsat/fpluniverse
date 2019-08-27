@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import { TEAMS, POSITIONS } from 'src/app/shared/translate';
 import { Options } from 'ng5-slider';
-
+import { POSITIONS, TEAMS } from 'src/app/shared/translate';
+import { FilterStateFacadeService } from '../../+state/filter-state-facade.service';
 @Component({
   selector: 'universe-filter-content',
   templateUrl: './universe-filter-content.component.html',
   styleUrls: ['./universe-filter-content.component.scss']
 })
 export class UniverseFilterContentComponent {
-  selectedPosition = '0';
-  selectedTeam = '0';
+  selectedPosition = '-1';
+  selectedTeam = '-1';
 
   priceOptions = {
     value: 0,
@@ -21,7 +21,21 @@ export class UniverseFilterContentComponent {
     } as Options
   };
 
+  constructor(private store: FilterStateFacadeService) {
+
+  }
+
   getTeams = (): string[] => TEAMS;
 
   getPositions = (): string[] => POSITIONS;
+
+  teamChanged(event: any) {
+    const selectedTeam = event.value;
+    this.store.changeTeam(selectedTeam as number);
+  }
+
+  positionChanged(event: any) {
+    const selectedPosition = event.value;
+    this.store.changePosition(selectedPosition as number);
+  }
 }
