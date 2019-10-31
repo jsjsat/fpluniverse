@@ -29,3 +29,8 @@
   outline-style: auto;
   outline-width: 1px;
 }
+
+.cdk-overlay-pane {
+  top: 2px !important;
+  transform: translateX(-16px) translateY(0px) !important;
+}
