@@ -11,10 +11,6 @@ const routes: Routes = [
   {
     path: "universe",
     loadChildren: "./universe/universe.module#UniverseModule"
-  },
-  {
-    path: "*",
-    redirectTo: "universe"
   }
 ];
 

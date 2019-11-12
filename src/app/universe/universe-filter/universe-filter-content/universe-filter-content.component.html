@@ -1,6 +1,16 @@
 <div class="container">
   <div class="filter">
     <mat-select
+      (selectionChange)="modeChanged($event)"
+      [(value)]="selectedMode"
+    >
+      <mat-option *ngFor="let mode of getModes()" value="{{ mode }}">
+        Show {{ mode }}
+      </mat-option>
+    </mat-select>
+  </div>
+  <div class="filter">
+    <mat-select
       (selectionChange)="positionChanged($event)"
       [(value)]="selectedPosition"
     >

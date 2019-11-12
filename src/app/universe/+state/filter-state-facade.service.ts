@@ -7,7 +7,9 @@ import {
   ChangeTeamAction,
   ChangePositionAction,
   ResetAction,
-  ChangeMaxPriceAction
+  ChangeMaxPriceAction,
+  ChangeModeAction,
+  InitAction
 } from "./filter-state.actions";
 
 @Injectable({ providedIn: "root" })
@@ -22,6 +24,10 @@ export class FilterStateFacadeService {
     return this.filterState$;
   }
 
+  init(filter: FilterState): void {
+    this.store.dispatch(new InitAction(filter));
+  }
+
   changeTeam(team?: number): void {
     this.store.dispatch(new ChangeTeamAction(team));
   }
@@ -32,6 +38,10 @@ export class FilterStateFacadeService {
 
   changeMaxPrice(max?: number): void {
     this.store.dispatch(new ChangeMaxPriceAction(max));
+  }
+
+  changeMode(mode?: string): void {
+    this.store.dispatch(new ChangeModeAction(mode));
   }
 
   resetFilters(): void {

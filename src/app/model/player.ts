@@ -5,5 +5,11 @@ export interface Player {
   team: number;
   position: number;
   cost: number;
+  goals: number;
+  assists: number;
+  cleanSheets: number;
+  bonusPoints: number;
+  pointsPerMillion: number;
   stats: string;
+  selectedMetric: number;
 }

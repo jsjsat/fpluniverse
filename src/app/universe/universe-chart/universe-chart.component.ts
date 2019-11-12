@@ -12,7 +12,7 @@ import Utils from "src/app/util/utils";
 import { FilterState } from "../+state/filter-state";
 import { FilterStateFacadeService } from "../+state/filter-state-facade.service";
 import { UniverseService } from "../services/universe-service";
-import { applyFilters } from "src/app/util/filter.utils";
+import { applyFilters, applyMode } from "src/app/util/filter.utils";
 import { debounceTime } from "rxjs/operators";
 
 @Component({
@@ -59,21 +59,28 @@ export class UniverseChartComponent implements OnInit {
   }
 
   getRadius(player: Player, players: Player[]): number {
-    const max: number = Math.max.apply(Math, players.map(p => p.points));
-    const min: number = Math.min.apply(Math, players.map(p => p.points));
+    const max: number = Math.max.apply(
+      Math,
+      players.map(p => p.selectedMetric)
+    );
+    const min: number = Math.min.apply(
+      Math,
+      players.map(p => p.selectedMetric)
+    );
 
     const minlen: number = Math.min(window.innerWidth, window.innerHeight);
     const scaleLinear: ScaleLinear<number, number> = d3
       .scaleLinear()
       .domain([min, max])
-      .range([1, minlen / 20]);
-    return scaleLinear(player.points);
+      .range([2, minlen / 20]);
+    return scaleLinear(player.selectedMetric);
   }
 
   updateChart(players: Player[], filters: FilterState) {
     players = players
+      .map(p => applyMode(p, filters.mode))
       .filter(p => applyFilters(p, filters))
-      .sort((a, b) => b.points - a.points);
+      .sort((a, b) => b.selectedMetric - a.selectedMetric);
 
     const bubbleChartWidth = window.innerWidth - 250;
     const bubbleChartHeight = window.innerHeight - 250;
@@ -90,9 +97,7 @@ export class UniverseChartComponent implements OnInit {
         "anticollide",
         d3
           .forceCollide()
-          .radius(
-            (d: SimulationNodeDatum) => this.getRadius(d as any, players) + 2
-          )
+          .radius((d: SimulationNodeDatum) => this.getRadius(d as any, players))
       );
 
     const svg = d3
@@ -132,9 +137,6 @@ export class UniverseChartComponent implements OnInit {
       .attr("fill", "white")
       .attr("text-anchor", "middle")
       .attr("font-size", 12)
-      .attr("display", d =>
-        this.fitsIntoCircle(d, players) ? "block" : "none"
-      )
       .on("click", p =>
         this.selectPlayer(
           p,
@@ -149,11 +151,15 @@ export class UniverseChartComponent implements OnInit {
 
     const bubbles_update = bubbles
       .merge(bubbles_enter)
-      .attr("r", (d: Player) => this.getRadius(d, players))
+      .attr("r", (d: Player) => this.getRadius(d, players) - 2)
       .attr("fill", d => Utils.getColor(d.team))
       .attr("id", d => d.lastName);
 
-    const texts_update = texts.merge(texts_enter);
+    const texts_update = texts
+      .merge(texts_enter)
+      .attr("display", d =>
+        this.fitsIntoCircle(d, players) ? "block" : "none"
+      );
 
     // EXIT
 
@@ -186,7 +192,7 @@ export class UniverseChartComponent implements OnInit {
   }
 
   fitsIntoCircle(player: Player, players: Player[]): boolean {
-    const circleSize: number = this.getRadius(player, players);
+    const circleSize: number = this.getRadius(player, players) - 2;
     return circleSize > player.lastName.length * 2;
   }
 

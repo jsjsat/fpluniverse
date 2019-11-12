@@ -6,7 +6,10 @@
   }"
 >
   <div class="title">
-    <span>{{ player.lastName }} {{ player.firstName }}</span>
+    <span
+      ><span class="points">[{{ player.selectedMetric }}]</span>
+      {{ player.lastName }} {{ player.firstName }}</span
+    >
   </div>
   <table>
     <tr>
@@ -25,6 +28,10 @@
     <tr>
       <td>Stats:</td>
       <td>{{ player.stats }}</td>
+    </tr>
+    <tr>
+      <td>Points/million:</td>
+      <td>{{ player.pointsPerMillion }}</td>
     </tr>
     <tr>
       <td>Points:</td>

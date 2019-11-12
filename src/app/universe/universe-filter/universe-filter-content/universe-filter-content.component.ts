@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from "@angular/core";
 import { Options } from "ng5-slider";
-import { POSITIONS, TEAMS, COSTS } from "src/app/shared/translate";
+import { POSITIONS, TEAMS, COSTS, MODES } from "src/app/shared/translate";
 import { FilterStateFacadeService } from "../../+state/filter-state-facade.service";
 import { Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";
@@ -17,18 +17,9 @@ export class UniverseFilterContentComponent implements OnDestroy {
   selectedPosition = "-1";
   selectedTeam = "-1";
   selectedCost = "" + COSTS[0];
+  selectedMode = MODES[0];
 
   disableReset = true;
-
-  priceOptions = {
-    value: 0,
-    highValue: 100,
-    options: {
-      floor: 3.8,
-      ceil: 14,
-      step: 0.1
-    } as Options
-  };
 
   constructor(private store: FilterStateFacadeService) {
     store.filterState$
@@ -37,9 +28,8 @@ export class UniverseFilterContentComponent implements OnDestroy {
         this.selectedPosition = "" + filterstate.position;
         this.selectedTeam = "" + filterstate.team;
         this.selectedCost = "" + filterstate.maxPrice;
-        console.log(filterstate, initialState);
+        this.selectedMode = filterstate.mode;
         this.disableReset = equals(filterstate, initialState);
-        console.log(this.disableReset);
       });
   }
 
@@ -48,6 +38,8 @@ export class UniverseFilterContentComponent implements OnDestroy {
   getPositions = (): string[] => POSITIONS;
 
   getCosts = (): number[] => COSTS;
+
+  getModes = (): string[] => MODES;
 
   teamChanged(event: any) {
     const selectedTeam = event.value;
@@ -62,6 +54,11 @@ export class UniverseFilterContentComponent implements OnDestroy {
   costChanged(event: any) {
     const selectedCost = event.value;
     this.store.changeMaxPrice(selectedCost as number);
+  }
+
+  modeChanged(event: any) {
+    const selectedMode = event.value;
+    this.store.changeMode(selectedMode);
   }
 
   resetFilters() {

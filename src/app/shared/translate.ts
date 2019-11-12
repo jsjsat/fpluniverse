@@ -44,3 +44,12 @@ export const COSTS = [
   4.5,
   4
 ];
+
+export const MODES = [
+  "points",
+  "points per million",
+  "goals",
+  "assists",
+  "clean sheets",
+  "bonus points"
+];
