@@ -37,12 +37,31 @@ export class UniverseComponent implements OnInit, OnDestroy {
 
     let teamIdx = -1;
     let posIdx = -1;
-    let maxPrice = COSTS[0];
+    let priceX = COSTS[0];
     let modeX = MODES[0];
 
-    if (team) {
-      COSTS.indexOf((maxprice as unknown) as number);
+    if (COSTS.includes(+maxprice)) {
+      priceX = +maxprice;
     }
+
+    if (team) {
+      teamIdx = TEAMS.indexOf(team);
+    }
+
+    if (position) {
+      posIdx = POSITIONS.indexOf(position);
+    }
+
+    if (MODES.includes(mode)) {
+      modeX = mode;
+    }
+
+    this.store.init({
+      maxPrice: priceX,
+      team: teamIdx,
+      position: posIdx,
+      mode: modeX
+    });
   }
 
   putStateIntoUrlWhenStoreChanges() {

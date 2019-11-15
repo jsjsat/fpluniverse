@@ -25,7 +25,7 @@ export function filterStateReducer(
 ) {
   switch (action.type) {
     case INIT_FILTERS:
-      return { ...state, ...filter };
+      return { ...state, ...action.filter };
     case CHANGE_POSITION:
       return { ...state, position: action.position };
     case CHANGE_TEAM:

@@ -72,7 +72,7 @@ export class UniverseChartComponent implements OnInit {
     const scaleLinear: ScaleLinear<number, number> = d3
       .scaleLinear()
       .domain([min, max])
-      .range([2, minlen / 20]);
+      .range([5, minlen / 20]);
     return scaleLinear(player.selectedMetric);
   }
 
@@ -91,8 +91,8 @@ export class UniverseChartComponent implements OnInit {
         "center",
         d3.forceCenter(bubbleChartWidth / 2 + 125, bubbleChartHeight / 2 + 125)
       )
-      .force("x", d3.forceX(bubbleChartWidth / 2 + 125).strength(0.02))
-      .force("y", d3.forceY(bubbleChartHeight / 2 + 125).strength(0.02))
+      .force("x", d3.forceX(bubbleChartWidth / 2 + 125).strength(0.05))
+      .force("y", d3.forceY(bubbleChartHeight / 2 + 125).strength(0.05))
       .force(
         "anticollide",
         d3
