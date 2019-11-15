@@ -1,12 +1,12 @@
-import { Action } from "@ngrx/store";
-import { FilterState } from "./filter-state";
+import { Action } from '@ngrx/store';
+import { FilterState } from './filter-state';
 
-export const INIT_FILTERS = "[UNIVERSE] INIT FILTERS";
-export const CHANGE_TEAM = "[UNIVERSE] CHANGE TEAM";
-export const CHANGE_POSITION = "[UNIVERSE] CHANGE POSITION";
-export const CHANGE_MAX_PRICE = "[UNIVERSE] CHANGE MAX PRICE";
-export const CHANGE_MODE = "[UNIVERSE] CHANGE MODE";
-export const RESET = "[UNIVERSE] RESET";
+export const INIT_FILTERS = '[UNIVERSE] INIT FILTERS';
+export const CHANGE_TEAM = '[UNIVERSE] CHANGE TEAM';
+export const CHANGE_POSITION = '[UNIVERSE] CHANGE POSITION';
+export const CHANGE_MAX_PRICE = '[UNIVERSE] CHANGE MAX PRICE';
+export const CHANGE_MODE = '[UNIVERSE] CHANGE MODE';
+export const RESET = '[UNIVERSE] RESET';
 
 export class ChangePositionAction implements Action {
   readonly type = CHANGE_POSITION;

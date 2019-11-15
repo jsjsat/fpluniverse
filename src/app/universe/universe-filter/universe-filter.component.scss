@@ -1,56 +1,56 @@
 $dialog-color: #6b6a69;
 
 .filter {
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 1;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1;
 }
 .filterbutton {
-    width: 25px;
-    height: 25px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    z-index: 3;
-    padding: 5px;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    cursor: pointer;
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 3;
+  padding: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  cursor: pointer;
 }
 
-.filterbutton:hover {   
-    line {
-        stroke: white;
-    }
-    path {
-        stroke: white;
-    }
+.filterbutton:hover {
+  line {
+    stroke: white;
+  }
+  path {
+    stroke: white;
+  }
 }
 
 .filterdialog {
-    min-width: 200px;
-    height: 800px;
-    background-color: $dialog-color;
-    position: absolute;
-    top: -767px;
-    right: -165px;
-    z-index: 2;
-    transition: all 0.5s cubic-bezier(0.82, 0.085, 0.395, 0.895);
-    border-bottom-left-radius: 5px;
-    border-bottom: 2px #555 solid;
-    border-left: 2px #555 solid;
+  min-width: 200px;
+  height: 800px;
+  background-color: $dialog-color;
+  position: absolute;
+  top: -767px;
+  right: -165px;
+  z-index: 2;
+  transition: all 0.5s cubic-bezier(0.82, 0.085, 0.395, 0.895);
+  border-bottom-left-radius: 5px;
+  border-bottom: 2px #555 solid;
+  border-left: 2px #555 solid;
 }
 
 .open {
-    right: 0;
-    top: 0;
-    padding: 15px;
+  right: 0;
+  top: 0;
+  padding: 15px;
 }
 
 .close svg {
-    stroke: black;
-    fill: transparent;
-    stroke-linecap: round;
-    stroke-width: 5;
+  stroke: black;
+  fill: transparent;
+  stroke-linecap: round;
+  stroke-width: 5;
 }

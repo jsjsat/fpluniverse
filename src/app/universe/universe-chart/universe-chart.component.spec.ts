@@ -8,7 +8,7 @@ describe('UniverseChartComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UniverseChartComponent ]
+      declarations: [ UniverseChartComponent ],
     })
     .compileComponents();
   }));

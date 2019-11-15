@@ -31,6 +31,6 @@ import { UniverseRouting } from './universe.routing';
     UniverseChartComponent,
     UniverseFilterComponent,
     UniverseFilterContentComponent,
-    PlayerDetailComponent]
+    PlayerDetailComponent],
 })
 export class UniverseModule { }

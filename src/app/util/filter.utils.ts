@@ -1,6 +1,7 @@
-import { Player } from "../model/player";
-import { FilterState } from "../universe/+state/filter-state";
-import { MODES } from "../shared/translate";
+// tslint:disable:triple-equals
+import { Player } from '../model/player';
+import { FilterState } from '../universe/+state/filter-state';
+import { MODES } from '../shared/translate';
 
 export const applyMode = (player: Player, mode: string): Player => {
   if (mode == MODES[0]) {
@@ -32,7 +33,7 @@ export const applyMode = (player: Player, mode: string): Player => {
 
 export const applyFilters = (
   player: Player,
-  filterState: FilterState
+  filterState: FilterState,
 ): boolean => {
   if (player.selectedMetric <= 0) {
     return false;

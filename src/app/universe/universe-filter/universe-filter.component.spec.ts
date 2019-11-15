@@ -8,7 +8,7 @@ describe('UniverseFilterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UniverseFilterComponent ]
+      declarations: [ UniverseFilterComponent ],
     })
     .compileComponents();
   }));

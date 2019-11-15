@@ -3,7 +3,7 @@ import { Component, OnInit, HostListener, ElementRef } from '@angular/core';
 @Component({
   selector: 'universe-filter',
   templateUrl: './universe-filter.component.html',
-  styleUrls: ['./universe-filter.component.scss']
+  styleUrls: ['./universe-filter.component.scss'],
 })
 export class UniverseFilterComponent implements OnInit {
   public open = false;

@@ -6,6 +6,6 @@ import { PositionPipe } from './position-pipe/position.pipe';
   declarations: [TeamPipe, PositionPipe],
   imports: [],
   providers: [],
-  exports: [TeamPipe, PositionPipe]
+  exports: [TeamPipe, PositionPipe],
 })
 export class SharedModule {}

@@ -63,6 +63,15 @@
       true,
       "ignore-params"
     ],
+    "trailing-comma": [true, {
+      "singleline": "never",
+      "multiline": {
+        "objects": "always",
+        "arrays": "always",
+        "functions": "always",
+        "typeLiterals": "ignore"
+      }
+    }],
     "no-misused-new": true,
     "no-non-null-assertion": true,
     "no-redundant-jsdoc": true,
@@ -126,6 +135,8 @@
     "use-life-cycle-interface": true,
     "use-pipe-transform-interface": true,
     "component-class-suffix": true,
-    "directive-class-suffix": true
+    "directive-class-suffix": true,
+    "directive-selector": [true, "attribute", "", "camelCase"],
+    "component-selector": [true, "element", "", "kebab-case"]
   }
 }

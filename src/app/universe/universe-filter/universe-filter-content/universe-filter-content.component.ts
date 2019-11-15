@@ -1,22 +1,22 @@
-import { Component, OnDestroy } from "@angular/core";
-import { Options } from "ng5-slider";
-import { POSITIONS, TEAMS, COSTS, MODES } from "src/app/shared/translate";
-import { FilterStateFacadeService } from "../../+state/filter-state-facade.service";
-import { Subject } from "rxjs";
-import { takeUntil } from "rxjs/operators";
-import { initialState } from "../../+state/filter-state.reducer";
-import { equals } from "../../+state/filter-state";
+import { Component, OnDestroy } from '@angular/core';
+import { Options } from 'ng5-slider';
+import { POSITIONS, TEAMS, COSTS, MODES } from 'src/app/shared/translate';
+import { FilterStateFacadeService } from '../../+state/filter-state-facade.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { initialState } from '../../+state/filter-state.reducer';
+import { equals } from '../../+state/filter-state';
 @Component({
-  selector: "universe-filter-content",
-  templateUrl: "./universe-filter-content.component.html",
-  styleUrls: ["./universe-filter-content.component.scss"]
+  selector: 'universe-filter-content',
+  templateUrl: './universe-filter-content.component.html',
+  styleUrls: ['./universe-filter-content.component.scss'],
 })
 export class UniverseFilterContentComponent implements OnDestroy {
   onDestroy = new Subject();
 
-  selectedPosition = "-1";
-  selectedTeam = "-1";
-  selectedCost = "" + COSTS[0];
+  selectedPosition = '-1';
+  selectedTeam = '-1';
+  selectedCost = '' + COSTS[0];
   selectedMode = MODES[0];
 
   disableReset = true;
@@ -24,10 +24,10 @@ export class UniverseFilterContentComponent implements OnDestroy {
   constructor(private store: FilterStateFacadeService) {
     store.filterState$
       .pipe(takeUntil(this.onDestroy.asObservable()))
-      .subscribe(filterstate => {
-        this.selectedPosition = "" + filterstate.position;
-        this.selectedTeam = "" + filterstate.team;
-        this.selectedCost = "" + filterstate.maxPrice;
+      .subscribe((filterstate) => {
+        this.selectedPosition = '' + filterstate.position;
+        this.selectedTeam = '' + filterstate.team;
+        this.selectedCost = '' + filterstate.maxPrice;
         this.selectedMode = filterstate.mode;
         this.disableReset = equals(filterstate, initialState);
       });

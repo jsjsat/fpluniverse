@@ -3,28 +3,28 @@ import {
   HostListener,
   OnInit,
   ViewEncapsulation
-} from "@angular/core";
-import * as d3 from "d3";
-import { ScaleLinear, SimulationNodeDatum } from "d3";
-import { Subject, combineLatest, BehaviorSubject } from "rxjs";
-import { Player } from "src/app/model/player";
-import Utils from "src/app/util/utils";
-import { FilterState } from "../+state/filter-state";
-import { FilterStateFacadeService } from "../+state/filter-state-facade.service";
-import { UniverseService } from "../services/universe-service";
-import { applyFilters, applyMode } from "src/app/util/filter.utils";
-import { debounceTime } from "rxjs/operators";
+} from '@angular/core';
+import * as d3 from 'd3';
+import { ScaleLinear, SimulationNodeDatum } from 'd3';
+import { Subject, combineLatest, BehaviorSubject } from 'rxjs';
+import { Player } from 'src/app/model/player';
+import Utils from 'src/app/util/utils';
+import { FilterState } from '../+state/filter-state';
+import { FilterStateFacadeService } from '../+state/filter-state-facade.service';
+import { UniverseService } from '../services/universe-service';
+import { applyFilters, applyMode } from 'src/app/util/filter.utils';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
-  selector: "universe-chart",
-  templateUrl: "./universe-chart.component.html",
-  styleUrls: ["./universe-chart.component.css"],
-  encapsulation: ViewEncapsulation.None
+  selector: 'universe-chart',
+  templateUrl: './universe-chart.component.html',
+  styleUrls: ['./universe-chart.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class UniverseChartComponent implements OnInit {
   constructor(
     private universeService: UniverseService,
-    private store: FilterStateFacadeService
+    private store: FilterStateFacadeService,
   ) {}
 
   public selectedPlayer: Player;
@@ -43,17 +43,17 @@ export class UniverseChartComponent implements OnInit {
     combineLatest([
       this._playersSubject.asObservable(),
       this.store.filterState$,
-      this.resizeSubject
+      this.resizeSubject,
     ])
       .pipe(
-        debounceTime(500) //due to resizing
+        debounceTime(500), // due to resizing
       )
       .subscribe((data: any[]) => {
         this.updateChart(data[0], data[1]);
       });
   }
 
-  @HostListener("window:resize", ["$event"])
+  @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.resizeSubject.next(true);
   }
@@ -61,11 +61,11 @@ export class UniverseChartComponent implements OnInit {
   getRadius(player: Player, players: Player[]): number {
     const max: number = Math.max.apply(
       Math,
-      players.map(p => p.selectedMetric)
+      players.map(p => p.selectedMetric),
     );
     const min: number = Math.min.apply(
       Math,
-      players.map(p => p.selectedMetric)
+      players.map(p => p.selectedMetric),
     );
 
     const minlen: number = Math.min(window.innerWidth, window.innerHeight);
@@ -88,77 +88,77 @@ export class UniverseChartComponent implements OnInit {
     this.simulation = d3
       .forceSimulation()
       .force(
-        "center",
-        d3.forceCenter(bubbleChartWidth / 2 + 125, bubbleChartHeight / 2 + 125)
+        'center',
+        d3.forceCenter(bubbleChartWidth / 2 + 125, bubbleChartHeight / 2 + 125),
       )
-      .force("x", d3.forceX(bubbleChartWidth / 2 + 125).strength(0.05))
-      .force("y", d3.forceY(bubbleChartHeight / 2 + 125).strength(0.05))
+      .force('x', d3.forceX(bubbleChartWidth / 2 + 125).strength(0.05))
+      .force('y', d3.forceY(bubbleChartHeight / 2 + 125).strength(0.05))
       .force(
-        "anticollide",
+        'anticollide',
         d3
           .forceCollide()
-          .radius((d: SimulationNodeDatum) => this.getRadius(d as any, players))
+          .radius((d: SimulationNodeDatum) => this.getRadius(d as any, players)),
       );
 
     const svg = d3
-      .select(".bubbleDiv > svg ")
-      .attr("height", bubbleChartHeight)
-      .attr("width", bubbleChartWidth);
+      .select('.bubbleDiv > svg ')
+      .attr('height', bubbleChartHeight)
+      .attr('width', bubbleChartWidth);
 
     const bubbles = svg
-      .selectAll("circle")
+      .selectAll('circle')
       .data(players, (d: Player) => d.lastName);
     const texts = svg
-      .selectAll("text")
+      .selectAll('text')
       .data(players, (d: Player) => d.lastName);
 
     // ENTER
 
     const bubbles_enter = bubbles
       .enter()
-      .append("circle")
-      .attr("class", "bubble")
-      .on("mouseover", p => this.selectPlayer(p, true, false))
-      .on("mouseout", p => this.selectPlayer(p, false, false))
-      .on("click", p =>
+      .append('circle')
+      .attr('class', 'bubble')
+      .on('mouseover', p => this.selectPlayer(p, true, false))
+      .on('mouseout', p => this.selectPlayer(p, false, false))
+      .on('click', p =>
         this.selectPlayer(
           p,
           !this.selectionSticky || p !== this.selectedPlayer,
-          true
-        )
+          true,
+        ),
       );
 
-    bubbles_enter.append("title");
+    bubbles_enter.append('title');
 
     const texts_enter = texts
       .enter()
-      .append("text")
+      .append('text')
       .text(d => d.lastName)
-      .attr("fill", "white")
-      .attr("text-anchor", "middle")
-      .attr("font-size", 12)
-      .on("click", p =>
+      .attr('fill', 'white')
+      .attr('text-anchor', 'middle')
+      .attr('font-size', 12)
+      .on('click', p =>
         this.selectPlayer(
           p,
           !this.selectionSticky || p !== this.selectedPlayer,
-          true
-        )
+          true,
+        ),
       )
-      .on("mouseover", p => this.selectPlayer(p, true, false))
-      .on("mouseout", p => this.selectPlayer(p, false, false));
+      .on('mouseover', p => this.selectPlayer(p, true, false))
+      .on('mouseout', p => this.selectPlayer(p, false, false));
 
     // UPDATE
 
     const bubbles_update = bubbles
       .merge(bubbles_enter)
-      .attr("r", (d: Player) => this.getRadius(d, players) - 2)
-      .attr("fill", d => Utils.getColor(d.team))
-      .attr("id", d => d.lastName);
+      .attr('r', (d: Player) => this.getRadius(d, players) - 2)
+      .attr('fill', d => Utils.getColor(d.team))
+      .attr('id', d => d.lastName);
 
     const texts_update = texts
       .merge(texts_enter)
-      .attr("display", d =>
-        this.fitsIntoCircle(d, players) ? "block" : "none"
+      .attr('display', d =>
+        this.fitsIntoCircle(d, players) ? 'block' : 'none',
       );
 
     // EXIT
@@ -166,25 +166,25 @@ export class UniverseChartComponent implements OnInit {
     bubbles.exit().remove();
     texts.exit().remove();
 
-    this.simulation.nodes(players).on("tick", ticked);
+    this.simulation.nodes(players).on('tick', ticked);
 
     function ticked() {
       bubbles_update
-        .attr("cx", function(d, i) {
+        .attr('cx', function(d, i) {
           const t: any = d;
           return t.x;
         })
-        .attr("cy", function(d, i) {
+        .attr('cy', function(d, i) {
           const t: any = d;
           return t.y;
         });
 
       texts_update
-        .attr("x", d => {
+        .attr('x', d => {
           const t: any = d;
           return t.x;
         })
-        .attr("y", d => {
+        .attr('y', d => {
           const t: any = d;
           return t.y;
         });

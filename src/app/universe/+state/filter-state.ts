@@ -1,6 +1,6 @@
-import { initialState } from "./filter-state.reducer";
+// tslint:disable:triple-equals
 
-export const FILTER_STATE_STORE_TOKEN = "filterstate";
+export const FILTER_STATE_STORE_TOKEN = 'filterstate';
 
 export interface FilterState {
   position: number;

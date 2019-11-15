@@ -1,4 +1,4 @@
-import { FilterState } from "./filter-state";
+import { FilterState } from './filter-state';
 import {
   Actions,
   CHANGE_POSITION,
@@ -7,21 +7,21 @@ import {
   CHANGE_MAX_PRICE,
   CHANGE_MODE,
   INIT_FILTERS
-} from "./filter-state.actions";
-import { COSTS, MODES } from "src/app/shared/translate";
-import { INIT_ACTION } from "@ngrx/store-devtools/src/reducer";
-import { filter } from "minimatch";
+} from './filter-state.actions';
+import { COSTS, MODES } from 'src/app/shared/translate';
+import { INIT_ACTION } from '@ngrx/store-devtools/src/reducer';
+import { filter } from 'minimatch';
 
 export const initialState: FilterState = {
   position: -1,
   team: -1,
   maxPrice: COSTS[0],
-  mode: MODES[0]
+  mode: MODES[0],
 };
 
 export function filterStateReducer(
   state: FilterState = initialState,
-  action: Actions
+  action: Actions,
 ) {
   switch (action.type) {
     case INIT_FILTERS:

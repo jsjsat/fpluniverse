@@ -1,8 +1,8 @@
-import { Injectable } from "@angular/core";
-import { Store } from "@ngrx/store";
-import { Observable } from "rxjs";
-import { FilterState } from "./filter-state";
-import { getFilterState } from "./filter-state.selectors";
+import { Injectable } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { FilterState } from './filter-state';
+import { getFilterState } from './filter-state.selectors';
 import {
   ChangeTeamAction,
   ChangePositionAction,
@@ -10,9 +10,9 @@ import {
   ChangeMaxPriceAction,
   ChangeModeAction,
   InitAction
-} from "./filter-state.actions";
+} from './filter-state.actions';
 
-@Injectable({ providedIn: "root" })
+@Injectable({ providedIn: 'root' })
 export class FilterStateFacadeService {
   filterState$: Observable<FilterState>;
 
