@@ -6,28 +6,30 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { FooterComponent } from './footer/footer.component';
+import { GoogleAnalyticsService } from './shared/ga.service';
 
 const routes: Routes = [
   {
-    path: 'universe',
+    path: 'bubbles',
     loadChildren: './universe/universe.module#UniverseModule',
   },
 ];
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, FooterComponent],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { useHash: true }),
     StoreModule.forRoot({}),
     // Instrumentation must be imported after importing StoreModule (config is optional)
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
     }),
   ],
-  providers: [HttpClient],
+  providers: [HttpClient, GoogleAnalyticsService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

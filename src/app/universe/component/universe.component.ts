@@ -7,6 +7,7 @@ import { takeUntil } from 'rxjs/operators';
 import { FilterState } from '../+state/filter-state';
 import { FilterStateFacadeService } from '../+state/filter-state-facade.service';
 import { TEAMS, MODES, POSITIONS, COSTS } from 'src/app/shared/translate';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-universe',
@@ -20,9 +21,11 @@ export class UniverseComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private store: FilterStateFacadeService,
     private location: Location,
+    private titleService: Title,
   ) {
     this.putInitialStateIntoStore();
     this.putStateIntoUrlWhenStoreChanges();
+    titleService.setTitle('FPL - Overall statistics');
   }
 
   ngOnInit(): void {}
@@ -66,7 +69,7 @@ export class UniverseComponent implements OnInit, OnDestroy {
   putStateIntoUrlWhenStoreChanges() {
     this.store.filterState$
       .pipe(takeUntil(this.onDestroy))
-      .subscribe((filterState) => {
+      .subscribe(filterState => {
         this.addToUrl(filterState);
       });
   }
@@ -105,8 +108,7 @@ export class UniverseComponent implements OnInit, OnDestroy {
       }
       paramStr += key + '=' + value;
     });
-
-    this.location.replaceState('/universe' + paramStr);
+    this.location.replaceState('bubbles' + paramStr);
   }
 
   ngOnDestroy(): void {

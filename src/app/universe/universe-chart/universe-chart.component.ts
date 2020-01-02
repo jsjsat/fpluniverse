@@ -2,7 +2,7 @@ import {
   Component,
   HostListener,
   OnInit,
-  ViewEncapsulation
+  ViewEncapsulation,
 } from '@angular/core';
 import * as d3 from 'd3';
 import { ScaleLinear, SimulationNodeDatum } from 'd3';
@@ -72,7 +72,7 @@ export class UniverseChartComponent implements OnInit {
     const scaleLinear: ScaleLinear<number, number> = d3
       .scaleLinear()
       .domain([min, max])
-      .range([5, minlen / 20]);
+      .range([5, minlen / 18]);
     return scaleLinear(player.selectedMetric);
   }
 
@@ -97,7 +97,9 @@ export class UniverseChartComponent implements OnInit {
         'anticollide',
         d3
           .forceCollide()
-          .radius((d: SimulationNodeDatum) => this.getRadius(d as any, players)),
+          .radius((d: SimulationNodeDatum) =>
+            this.getRadius(d as any, players),
+          ),
       );
 
     const svg = d3

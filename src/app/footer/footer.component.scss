@@ -1,0 +1,44 @@
+footer {
+  height: 25px;
+  background: #37003c;
+  color: white;
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+  border-top: 2px solid white;
+  line-height: 25px;
+  display: flex;
+  justify-content: flex-end;
+  padding-left: 32px;
+  padding-right: 32px;
+  box-sizing: border-box;
+}
+
+footer > a {
+  color: white;
+  text-decoration: none;
+  opacity: 0.9;
+}
+
+footer > a:hover {
+  color: violet;
+  text-decoration: none;
+}
+
+.divider {
+  opacity: 0.5;
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+#reddit {
+  opacity: 0.6;
+  position: relative;
+  top: 2px;
+}
+
+#reddit:hover {
+  opacity: 1;
+  position: relative;
+  top: 2px;
+}
